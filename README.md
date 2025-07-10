@@ -3,7 +3,7 @@
 <!-- LOGO -->
 <br />
 <div align="center">
-  <h3 align="center">UrbanTracker 🚍</h3>
+  <h3 align="center">UrbanTrackr 🚍</h3>
   <p align="center">
     Plataforma de geolocalización en tiempo real para buses de transporte público.
     <br />
