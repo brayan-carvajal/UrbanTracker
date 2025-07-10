@@ -60,7 +60,7 @@ UrbanTracker es una plataforma web y móvil que permite visualizar en tiempo rea
         <sub><b>Brayan Estiven Carvajal</b></sub>
       </a>
       <br />
-      <small>Líder y Programador</small>
+      <small>Programador</small>
     </td>
     <td align="center">
       <a href="https://github.com/AFSB114">
@@ -68,7 +68,7 @@ UrbanTracker es una plataforma web y móvil que permite visualizar en tiempo rea
         <sub><b>Andres Felipe Suaza</b></sub>
       </a>
       <br />
-      <small>Full Stack</small>
+      <small>Programador</small>
     </td>
     <td align="center">
       <a href="https://github.com/Jurassickk">
@@ -76,7 +76,7 @@ UrbanTracker es una plataforma web y móvil que permite visualizar en tiempo rea
         <sub><b>Diego Fernando Cuellar</b></sub>
       </a>
       <br />
-      <small>Full Stack</small>
+      <small>Programador</small>
     </td>
   </tr>
 </table>
