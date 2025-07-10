@@ -1,5 +1,6 @@
 package com.sena.urbantracker.model;
 
+import com.sena.urbantracker.vehicle.Vehicle;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

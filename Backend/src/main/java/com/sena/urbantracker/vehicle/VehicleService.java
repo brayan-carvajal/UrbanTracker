@@ -1,7 +1,5 @@
-package com.sena.urbantracker.service;
+package com.sena.urbantracker.vehicle;
 
-import com.sena.urbantracker.model.Vehicle;
-import com.sena.urbantracker.repository.IVehicle;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;

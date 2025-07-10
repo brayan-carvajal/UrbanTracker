@@ -1,8 +1,6 @@
-package com.sena.urbantracker.service;
+package com.sena.urbantracker.company;
 
 
-import com.sena.urbantracker.model.Company;
-import com.sena.urbantracker.repository.ICompany;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
