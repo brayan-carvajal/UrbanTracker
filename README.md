@@ -46,6 +46,7 @@ UrbanTracker es una plataforma web y móvil que permite visualizar en tiempo rea
 - ![React Native](https://img.shields.io/badge/react_native-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 - ![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)
 - ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
+- Google Maps API<img href="https://www.google.com/images/branding/product/ico/maps15_bnuw3a_32dp.ico">
 
 ---
 
