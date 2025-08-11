@@ -1,13 +1,21 @@
-import { ScreenContent } from 'components/ScreenContent';
-import { StatusBar } from 'expo-status-bar';
-
+import './polyfills'; // Debe ser la primera importación
 import './global.css';
+import AuthProvider from '@/auth/context/provider/AuthProvider';
+import Index from './src';
+import MqttProvider from '@/mqtt/provider/MqttProviderWS';
+import LocationProviderGeolocation from '@/location/provider/LocationProviderGeolocation';
+import { NavigationContainer } from '@react-navigation/native';
 
 export default function App() {
   return (
-    <>
-      <ScreenContent title="Home" path="App.tsx"></ScreenContent>
-      <StatusBar style="auto" />
-    </>
+    <AuthProvider>
+      <MqttProvider>
+        <LocationProviderGeolocation>
+          <NavigationContainer>
+            <Index />
+          </NavigationContainer>
+        </LocationProviderGeolocation>
+      </MqttProvider>
+    </AuthProvider>
   );
 }

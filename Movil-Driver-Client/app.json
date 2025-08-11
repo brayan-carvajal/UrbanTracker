@@ -1,37 +1,57 @@
 {
   "expo": {
-    "name": "my-expo-app",
-    "slug": "my-expo-app",
+    "name": "UrbanTracker",
+    "slug": "UrbanTracker",
     "version": "1.0.0",
-
+    "orientation": "portrait",
+    "userInterfaceStyle": "auto",
+    "icon": "./assets/Logotipo.png",
+    "splash": {
+      "image": "./assets/Isotipo.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff",
+      "tabletImage": "./assets/Isotipo.png",
+      "tabletResizeMode": "contain",
+      "tabletBackgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "web": {
       "favicon": "./assets/favicon.png"
     },
-
     "experiments": {
       "tsconfigPaths": true
     },
-
     "plugins": [],
-
-    "orientation": "portrait",
-    "icon": "./assets/icon.png",
-
-    "userInterfaceStyle": "light",
-
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
-    "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.anonymous.UrbanTracker",
+      "splash": {
+        "image": "./assets/Isotipo.png",
+        "resizeMode": "contain",
+        "backgroundColor": "#ffffff",
+        "tabletImage": "./assets/Isotipo.png",
+        "tabletResizeMode": "contain",
+        "tabletBackgroundColor": "#ffffff"
+      }
     },
     "android": {
+      "package": "com.anonymous.UrbanTracker",
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/Isotipo.png",
+        "backgroundColor": "#000000",
+        "resizeMode": "contain"
+      },
+      "splash": {
+        "image": "./assets/Logotipo.png",
+        "resizeMode": "contain",
         "backgroundColor": "#ffffff"
+      },
+      "statusBar": {
+        "translucent": true,
+        "backgroundColor": "#ffffff",
+        "barStyle": "dark-content"
       }
     }
   }
