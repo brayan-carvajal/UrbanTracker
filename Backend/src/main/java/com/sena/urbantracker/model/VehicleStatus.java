@@ -1,4 +1,4 @@
-package com.sena.urbantracker.vehicleStatus;
+package com.sena.urbantracker.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -6,7 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
+@Entity(name = "vehicle_status")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -15,8 +15,10 @@ public class VehicleStatus {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "id")
+    private Integer id;
 
     @Column(unique = true, nullable = false)
     private String name;
+
 }

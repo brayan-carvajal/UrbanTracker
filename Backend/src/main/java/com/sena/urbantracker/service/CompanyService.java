@@ -1,8 +1,8 @@
-package com.sena.urbantracker.company;
+package com.sena.urbantracker.service;
 
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import com.sena.urbantracker.repository.ICompany;
+import com.sena.urbantracker.model.Company;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -10,11 +10,9 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-@AllArgsConstructor
-@NoArgsConstructor
 public class CompanyService {
 
-    private ICompany iCompany;
+    private final ICompany iCompany;
 
     public List<Company> getAllCompanies(){
         return iCompany.findAll();

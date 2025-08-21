@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface IUser extends JpaRepository<User, String> {
+public interface IUser extends JpaRepository<User, Integer> {
 
     @Query("SELECT u.id, u.username, u.role FROM users u")
     List<UserView> getAll();

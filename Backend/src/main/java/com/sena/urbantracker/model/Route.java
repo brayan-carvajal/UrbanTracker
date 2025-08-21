@@ -16,8 +16,9 @@ import java.util.List;
 @Builder
 public class Route {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Integer id;
 
     @Column(nullable = false, unique = true)
     private Integer number;
