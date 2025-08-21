@@ -1,6 +1,5 @@
 package com.sena.urbantracker.controller;
 
-import com.sena.urbantracker.DTO.UserView;
 import com.sena.urbantracker.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
