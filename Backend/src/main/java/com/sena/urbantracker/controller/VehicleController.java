@@ -1,5 +1,6 @@
-package com.sena.urbantracker.company;
+package com.sena.urbantracker.controller;
 
+import com.sena.urbantracker.service.VehicleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,14 +8,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1/company")
+@RequestMapping("/api/v1/vehicle")
 @RequiredArgsConstructor
-public class CompanyController {
+public class VehicleController {
 
-    private final CompanyService companyService;
+    private final VehicleService vehicleService;
 
     @GetMapping("/")
-    public ResponseEntity<?> getAllCompanies() {
-        return ResponseEntity.ok(companyService.getAllCompanies());
+    public ResponseEntity<?> getAllVehicles() {
+        return ResponseEntity.ok(vehicleService.getAllVehicles());
     }
 }

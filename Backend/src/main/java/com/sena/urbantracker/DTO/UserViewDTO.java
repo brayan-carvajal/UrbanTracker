@@ -10,8 +10,10 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserView {
+public class UserViewDTO {
+
     private String id;
     private String username;
     private Role role;
+
 }
