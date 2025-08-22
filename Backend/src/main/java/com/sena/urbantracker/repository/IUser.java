@@ -9,6 +9,8 @@ import java.util.List;
 
 public interface IUser extends JpaRepository<User, Integer> {
 
-    @Query("SELECT u.id, u.username, u.role FROM users u")
+    @Query("SELECT u.id, u.userName, u.role FROM users u")
     List<UserViewDTO> getAll();
+
+    boolean existsByUserName(String userName);
 }

@@ -1,7 +1,7 @@
 package com.sena.urbantracker.service;
 
 import com.sena.urbantracker.DTO.RoleDTO;
-import com.sena.urbantracker.DTO.responseDTO;
+import com.sena.urbantracker.DTO.ResponseDTO;
 import com.sena.urbantracker.model.Role;
 import com.sena.urbantracker.repository.IRole;
 import lombok.RequiredArgsConstructor;
@@ -24,27 +24,27 @@ public class RoleService {
     }
 
     //guarda el rol si el id es cero si es mayor lo actualiza
-    public responseDTO save(RoleDTO roleDTO) {
+    public ResponseDTO save(RoleDTO roleDTO) {
 
         // Validaciones
         if (!StringUtils.hasText(roleDTO.getName())) {
-            return new responseDTO(HttpStatus.BAD_REQUEST.toString(),
+            return new ResponseDTO(HttpStatus.BAD_REQUEST.toString(),
                     "El nombre del rol no puede ser nulo o vacío.");
         }
 
         if (roleDTO.getName().length() > 50) {
-            return new responseDTO(HttpStatus.BAD_REQUEST.toString(),
-                    "El nombre del rol no puede superar los 50 caracteres.");
+            return new ResponseDTO(HttpStatus.BAD_REQUEST.toString(),
+                    "El nombre del usuario no puede superar los 50 caracteres.");
         }
 
         if (!roleDTO.getName().matches("^[a-zA-Z\\s]+$")) {
-            return new responseDTO(HttpStatus.BAD_REQUEST.toString(),
+            return new ResponseDTO(HttpStatus.BAD_REQUEST.toString(),
                     "El nombre solo puede contener letras y espacios.");
         }
 
         // Validar duplicados
         if (data.existsByName(roleDTO.getName())) {
-            return new responseDTO(HttpStatus.CONFLICT.toString(),
+            return new ResponseDTO(HttpStatus.CONFLICT.toString(),
                     "Ya existe un rol con ese nombre.");
         }
 
@@ -57,7 +57,7 @@ public class RoleService {
             // actualizar existente
             Optional<Role> existingRole = data.findById(roleDTO.getId());
             if (!existingRole.isPresent()) {
-                return new responseDTO(HttpStatus.BAD_REQUEST.toString(),
+                return new ResponseDTO(HttpStatus.BAD_REQUEST.toString(),
                         "El rol con el ID proporcionado no existe.");
             }
             role = convertToModel(roleDTO);
@@ -66,7 +66,7 @@ public class RoleService {
         // Guardar
         data.save(role);
 
-        return new responseDTO(HttpStatus.OK.toString(),
+        return new ResponseDTO(HttpStatus.OK.toString(),
                 "El rol se guardó correctamente.");
     }
 
@@ -76,13 +76,13 @@ public class RoleService {
     }
 
     //borro el rol segun el id
-    public responseDTO deleteRole(int id) {
+    public ResponseDTO deleteRole(int id) {
         Optional<Role> roleOpt = findById(id);
         if (!roleOpt.isPresent()) {
-            return new responseDTO("El rol no existe", HttpStatus.NOT_FOUND.toString());
+            return new ResponseDTO("El rol no existe", HttpStatus.NOT_FOUND.toString());
         }
         data.deleteById(id);
-        return new responseDTO("Rol eliminado correctamente", HttpStatus.OK.toString());
+        return new ResponseDTO("Rol eliminado correctamente", HttpStatus.OK.toString());
     }
 
     public RoleDTO convertToDTO(Role rol) {
