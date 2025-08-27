@@ -1,7 +1,6 @@
-package com.sena.urbantracker.controller;
+package com.sena.urbantracker.controller.Public;
 
 import com.sena.urbantracker.DTO.ResponseDTO;
-import com.sena.urbantracker.DTO.RoleDTO;
 import com.sena.urbantracker.DTO.UserDTO;
 import com.sena.urbantracker.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -10,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/v1/user")
+@RequestMapping("/api/v1/public/user")
 @RequiredArgsConstructor
 public class UserController {
 

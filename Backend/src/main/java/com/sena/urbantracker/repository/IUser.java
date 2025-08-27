@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface IUser extends JpaRepository<User, Integer> {
 
@@ -13,4 +14,6 @@ public interface IUser extends JpaRepository<User, Integer> {
     List<UserViewDTO> getAll();
 
     boolean existsByUserName(String userName);
+
+    Optional<User> findByUserName(String username);
 }

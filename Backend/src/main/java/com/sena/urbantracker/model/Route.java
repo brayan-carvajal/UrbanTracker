@@ -20,11 +20,11 @@ public class Route {
     @Column(name = "id")
     private Integer id;
 
-    @Column(nullable = false, unique = true)
-    private Integer number;
+    @Column(name = "number_route",nullable = false, unique = true)
+    private Integer numberRoute;
 
-    @Column(nullable = false, unique = true)
-    private String string;
+    @Column(name = "description", nullable = false, unique = true)
+    private String description;
 
     @OneToMany(mappedBy = "route", cascade = CascadeType.ALL)
     @JsonIgnore

@@ -14,6 +14,6 @@ public class UserViewDTO {
 
     private String id;
     private String username;
-    private Role role;
+    private Integer role;
 
 }

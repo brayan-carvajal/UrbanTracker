@@ -124,7 +124,7 @@ public class UserService {
     public UserDTO convertToDTO(User user) {
         return new UserDTO(
                 user.getId(),
-                user.getUserName(),
+                user.getUsername(),
                 user.getPassword(),
                 user.getRole() != null ? user.getRole().getId() : null
         );
