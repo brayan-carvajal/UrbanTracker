@@ -13,7 +13,17 @@ interface Location {
   timestamp: number;
 }
 
-export default function LocationProvider({ children }: { children: React.ReactNode }) {
+interface LocationProviderConditionalProps {
+  children: React.ReactNode;
+  shouldTrack: boolean; // Prop para controlar si debe hacer tracking
+  isAuthenticated: boolean; // Prop para verificar autenticación
+}
+
+export default function LocationProviderConditional({ 
+  children, 
+  shouldTrack = false, 
+  isAuthenticated = false 
+}: LocationProviderConditionalProps) {
   const [location, setLocation] = useState<Location | null>(null);
   const [permissionStatus, setPermissionStatus] = useState<LocationPermissionStatus>('prompt');
   const [isTracking, setIsTracking] = useState<boolean>(false);
@@ -181,24 +191,29 @@ export default function LocationProvider({ children }: { children: React.ReactNo
     }
   };
 
-  // Watch position for automatic tracking
+  // Watch position for automatic tracking - Solo cuando isAuthenticated y shouldTrack son true
   useEffect(() => {
     let subscription: ExpoLocation.LocationSubscription | null = null;
 
     const startLocationTracking = async () => {
-      if (isTracking && permissionStatus === 'granted') {
+      // Solo trackear si está autenticado, shouldTrack es true, tiene permisos y isTracking está activo
+      if (isAuthenticated && shouldTrack && isTracking && permissionStatus === 'granted') {
         try {
-          console.log('🔄 Iniciando tracking de ubicación...');
+          console.log('🔄 Iniciando tracking de ubicación CONDICIONAL...');
+          console.log('  - Autenticado:', isAuthenticated);
+          console.log('  - Debe trackear:', shouldTrack);
+          console.log('  - Tracking activo:', isTracking);
+          console.log('  - Permisos:', permissionStatus);
           
           subscription = await ExpoLocation.watchPositionAsync(
             {
               accuracy: ExpoLocation.Accuracy.High,
-              timeInterval: 1000, // 1 seconds
-              distanceInterval: 1, // 1 meters
+              timeInterval: 1000, // 1 second
+              distanceInterval: 1, // 1 meter
             },
             (expoLocation) => {
               const newLocation = convertToLocation(expoLocation);
-              console.log('🔄 Ubicación actualizada:', {
+              console.log('🔄 Ubicación actualizada CONDICIONAL:', {
                 lat: newLocation.latitude,
                 lon: newLocation.longitude,
                 accuracy: newLocation.accuracy
@@ -207,8 +222,15 @@ export default function LocationProvider({ children }: { children: React.ReactNo
             }
           );
         } catch (error) {
-          console.error('❌ Error iniciando tracking:', error);
+          console.error('❌ Error iniciando tracking condicional:', error);
         }
+      } else {
+        console.log('⏹️ No iniciando tracking - condiciones no cumplidas:', {
+          isAuthenticated,
+          shouldTrack,
+          isTracking,
+          permissionStatus
+        });
       }
     };
 
@@ -217,19 +239,32 @@ export default function LocationProvider({ children }: { children: React.ReactNo
     // Cleanup function
     return () => {
       if (subscription) {
-        console.log('⏹️ Deteniendo tracking de ubicación...');
+        console.log('⏹️ Deteniendo tracking de ubicación CONDICIONAL...');
         subscription.remove();
       }
     };
-  }, [isTracking, permissionStatus]);
+  }, [isAuthenticated, shouldTrack, isTracking, permissionStatus]);
 
   // Check permission status on mount
   useEffect(() => {
     checkPermissionStatus().then(setPermissionStatus);
   }, []);
 
-  // Function to toggle tracking
+  // Function to toggle tracking - Solo permitir si está autenticado y shouldTrack
   const toggleTracking = () => {
+    if (!isAuthenticated) {
+      console.log('❌ No se puede activar tracking: usuario no autenticado');
+      Alert.alert('Error', 'Debes iniciar sesión para usar el tracking de ubicación');
+      return;
+    }
+    
+    if (!shouldTrack) {
+      console.log('❌ No se puede activar tracking: shouldTrack es false');
+      Alert.alert('Información', 'Debes iniciar el recorrido primero para activar el tracking');
+      return;
+    }
+    
+    console.log(`🔄 Cambiando estado de tracking: ${!isTracking}`);
     setIsTracking((prev) => !prev);
   };
 
@@ -241,7 +276,7 @@ export default function LocationProvider({ children }: { children: React.ReactNo
       requestLocation,
       toggleTracking,
     }),
-    [location, permissionStatus, isTracking]
+    [location, permissionStatus, isTracking, isAuthenticated, shouldTrack]
   );
 
   return <LocationContext.Provider value={value}>{children}</LocationContext.Provider>;

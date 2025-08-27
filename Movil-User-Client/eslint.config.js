@@ -8,21 +8,16 @@ module.exports = defineConfig([
     ignores: ['dist/*'],
   },
   {
-    rules: {
-      'react/display-name': 'off',
-    },
-  },
-  {
     settings: {
       'import/resolver': {
         alias: {
-          map: [
-            ['@', './src'], // o './app' si usas Expo Router
-            ['@Assets', './assets'],
-          ],
+          map: [['@', './src']],
           extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
         },
       },
+    },
+    rules: {
+      'react/display-name': 'off',
     },
   },
 ]);
