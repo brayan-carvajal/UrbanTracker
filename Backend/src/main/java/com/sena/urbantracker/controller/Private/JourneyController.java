@@ -1,6 +1,6 @@
-package com.sena.urbantracker.controller;
+package com.sena.urbantracker.controller.Private;
 
-import com.sena.urbantracker.service.CompanyService;
+import com.sena.urbantracker.service.JourneyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1/company")
+@RequestMapping("/api/v1/journey")
 @RequiredArgsConstructor
-public class CompanyController {
+public class JourneyController {
 
-    private final CompanyService companyService;
+    private final JourneyService journeyService;
 
     @GetMapping("/")
-    public ResponseEntity<?> getAllCompanies() {
-        return ResponseEntity.ok(companyService.getAllCompanies());
+    public ResponseEntity<?> getAllJourneys() {
+        return ResponseEntity.ok(journeyService.getAllJourneys());
     }
 }
