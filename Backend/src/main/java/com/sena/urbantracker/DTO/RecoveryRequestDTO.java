@@ -12,6 +12,6 @@ public class RecoveryRequestDTO {
     private int id;
     private String email;
     private String token;
-    private long expirationTime;
-    private User user;
+    private Integer expirationTime;
+    private Integer user;
 }

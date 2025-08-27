@@ -1,4 +1,4 @@
-package com.sena.urbantracker.controller;
+package com.sena.urbantracker.controller.Private;
 
 import com.sena.urbantracker.service.RouteService;
 import lombok.RequiredArgsConstructor;

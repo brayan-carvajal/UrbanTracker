@@ -1,7 +1,6 @@
-package com.sena.urbantracker.controller;
+package com.sena.urbantracker.controller.Private;
 
 import com.sena.urbantracker.DTO.ResponseDTO;
-import com.sena.urbantracker.DTO.RoleDTO;
 import com.sena.urbantracker.DTO.UserDTO;
 import com.sena.urbantracker.service.UserService;
 import lombok.RequiredArgsConstructor;
