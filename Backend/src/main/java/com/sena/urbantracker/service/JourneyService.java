@@ -12,8 +12,6 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-@AllArgsConstructor
-@NoArgsConstructor
 public class JourneyService {
 
     private IJourney iJourney;

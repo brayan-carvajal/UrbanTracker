@@ -1,26 +1,21 @@
-package com.sena.urbantracker.vehicle;
+package com.sena.urbantracker.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.sena.urbantracker.company.Company;
-import com.sena.urbantracker.model.User;
-import com.sena.urbantracker.vehicleStatus.VehicleStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
-@Entity
+@Entity(name = "vehicle")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Builder
 public class Vehicle {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Integer id;
 
     @ManyToOne
     @JoinColumn(name = "company_id", nullable = false)
@@ -43,7 +38,4 @@ public class Vehicle {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @OneToMany(mappedBy = "vehicle", cascade = CascadeType.ALL)
-    @JsonIgnore
-    private List<Vehicle> vehicles;
 }

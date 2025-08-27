@@ -1,7 +1,6 @@
 package com.sena.urbantracker.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.sena.urbantracker.vehicle.Vehicle;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,11 +16,12 @@ import java.util.List;
 @Builder
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Integer id;
 
-    @Column(nullable = false, unique = true, length = 50)
-    private String username;
+    @Column(name = "username",nullable = false, unique = true, length = 50)
+    private String userName;
 
     @Column(nullable = false, length = 50)
     private String password;

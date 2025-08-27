@@ -1,11 +1,12 @@
 package com.sena.urbantracker.controller;
 
+import com.sena.urbantracker.DTO.RoleDTO;
+import com.sena.urbantracker.DTO.ResponseDTO;
 import com.sena.urbantracker.service.RoleService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/role")
@@ -18,4 +19,17 @@ public class RoleController {
     public ResponseEntity<?> getAllRoles() {
         return ResponseEntity.ok(roleService.getAllRoles());
     }
+
+    @PostMapping("/")
+    public ResponseEntity<Object> createRole(@RequestBody RoleDTO roleDTO) {
+        ResponseDTO response = roleService.save(roleDTO);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Object> deleteRole(@PathVariable int id) {
+        ResponseDTO response = roleService.deleteRole(id);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
 }

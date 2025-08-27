@@ -1,6 +1,5 @@
 package com.sena.urbantracker.model;
 
-import com.sena.urbantracker.vehicle.Vehicle;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,8 +13,9 @@ import lombok.NoArgsConstructor;
 @Builder
 public class Journey {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Integer id;
 
     @ManyToOne
     @JoinColumn(name = "vehicle_id", nullable = false)

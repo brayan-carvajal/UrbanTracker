@@ -13,8 +13,9 @@ import lombok.NoArgsConstructor;
 @Builder
 public class RoutePoint {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Integer id;
 
     @ManyToOne
     @JoinColumn(name = "route_id", nullable = false)

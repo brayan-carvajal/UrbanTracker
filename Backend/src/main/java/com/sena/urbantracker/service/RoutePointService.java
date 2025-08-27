@@ -10,9 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-@AllArgsConstructor
 @RequiredArgsConstructor
-@NoArgsConstructor
 public class RoutePointService {
 
     private IRoutePoint iRoutePoint;
