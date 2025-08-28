@@ -1,23 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
-import { Alert, Linking, Platform } from 'react-native';
+import { Alert, Linking, Platform, PermissionsAndroid } from 'react-native';
 import LocationContext from "../context/LocationContext";
-import type { LocationPermissionStatus } from "../types";
+import type { LocationPermissionStatus } from "@/Types/location";
 import * as ExpoLocation from 'expo-location';
-import { PermissionsAndroid } from 'react-native';
-
-// Define a location interface compatible with existing code
-interface Location {
-  latitude: number;
-  longitude: number;
-  accuracy: number;
-  timestamp: number;
-}
-
-interface LocationProviderConditionalProps {
-  children: React.ReactNode;
-  shouldTrack: boolean; // Prop para controlar si debe hacer tracking
-  isAuthenticated: boolean; // Prop para verificar autenticación
-}
 
 export default function LocationProviderConditional({ 
   children, 
